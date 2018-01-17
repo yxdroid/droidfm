@@ -181,6 +181,7 @@
 -keep interface com.trello.rxlifecycle.** { *; }
 
 # fresco
+-keep,allowobfuscation @interface com.facebook.common.internal.DoNotStrip
 -keep @com.facebook.common.internal.DoNotStrip class *
 -keepclassmembers class * {
     @com.facebook.common.internal.DoNotStrip *;

@@ -19,7 +19,7 @@ public abstract class LazyFragment extends BaseFragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         this.isVisible = isVisibleToUser;
-        Logger.e("setUserVisibleHint");
+        Logger.i("setUserVisibleHint");
         preLoadData(false);
     }
 
@@ -27,7 +27,7 @@ public abstract class LazyFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         this.isViewInit = true;
-        Logger.e("onActivityCreated");
+        Logger.i("onActivityCreated");
         // 防止一开始加载的时候未 调用 preLoadData 方法， 因为setUserVisibleHint 比 onActivityCreated 触发 前
         if (getUserVisibleHint()) {
             preLoadData(false);
