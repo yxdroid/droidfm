@@ -2,17 +2,17 @@ package yxdroid.pt.activity;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.res.Configuration;
 
 import com.orhanobut.logger.Logger;
 
+import pub.devrel.easypermissions.AfterPermissionGranted;
+import pub.devrel.easypermissions.EasyPermissions;
 import yxdroid.droidfm.base.BaseMVPActivity;
 import yxdroid.droidfm.mvp.presenter.BasePresenter;
 import yxdroid.pt.bean.Token;
 import yxdroid.pt.presenter.WelcomePresenter;
 import yxdroid.pt.view.IWelcomeView;
-
-import pub.devrel.easypermissions.AfterPermissionGranted;
-import pub.devrel.easypermissions.EasyPermissions;
 
 public class WelcomeActivity extends BaseMVPActivity
         <IWelcomeView, WelcomePresenter, WelcomeActivity> implements IWelcomeView {
@@ -58,7 +58,18 @@ public class WelcomeActivity extends BaseMVPActivity
     @Override
     public void onGetTokenSuccess(Token token) {
         Logger.i("onGetTokenSuccess");
-        startActivity(new Intent(this, MainActivity.class));
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
         close();
+    }
+
+    @Override
+    public void onMultiWindowModeChanged(boolean isInMultiWindowMode, Configuration newConfig) {
+        super.onMultiWindowModeChanged(isInMultiWindowMode, newConfig);
+    }
+
+    @Override
+    public void onPictureInPictureModeChanged(boolean isInPictureInPictureMode, Configuration newConfig) {
+        super.onPictureInPictureModeChanged(isInPictureInPictureMode, newConfig);
     }
 }

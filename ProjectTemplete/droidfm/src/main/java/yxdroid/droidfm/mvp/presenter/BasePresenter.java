@@ -2,14 +2,14 @@ package yxdroid.droidfm.mvp.presenter;
 
 import android.os.Bundle;
 
-import yxdroid.droidfm.http.retrofit.RxActionManagerImpl;
-import yxdroid.droidfm.base.BaseMVPActivity;
-import yxdroid.droidfm.mvp.LifeCycleListener;
-import yxdroid.droidfm.utils.MD5Util;
-
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
+
+import yxdroid.droidfm.base.BaseMVPActivity;
+import yxdroid.droidfm.http.retrofit.RxActionManagerImpl;
+import yxdroid.droidfm.mvp.LifeCycleListener;
+import yxdroid.droidfm.utils.MD5Util;
 
 public class BasePresenter<T, P> implements LifeCycleListener {
 

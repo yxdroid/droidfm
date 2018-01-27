@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="yxdroid.pt.activity.MainActivity">
 
@@ -17,9 +17,11 @@
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/iv_pic"
-        fresco:fadeDuration="3000"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:visibility="gone"
+        fresco:fadeDuration="3000" />
+
 
 </LinearLayout>
