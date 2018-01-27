@@ -15,6 +15,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import pub.devrel.easypermissions.EasyPermissions;
 import yxdroid.droidfm.ActivityStatckManager;
+import yxdroid.droidfm.fragment.FragmentCommunication;
 import yxdroid.droidfm.mvp.LifeCycleListener;
 import yxdroid.droidfm.mvp.presenter.BasePresenter;
 import yxdroid.droidfm.mvp.view.IBaseView;
@@ -25,6 +26,8 @@ public abstract class BaseMVPActivity<T, V extends BasePresenter, P extends Base
     protected V mPresenter;
 
     private LifeCycleListener mLifeCycleListener;
+
+    private boolean isSetFragmentCommunicationInterface = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,7 +45,9 @@ public abstract class BaseMVPActivity<T, V extends BasePresenter, P extends Base
 
         mPresenter = (V) createPresenter();
 
-        mPresenter.attachView(this, this);
+        if (mPresenter != null) {
+            mPresenter.attachView(this, this);
+        }
 
         if (mLifeCycleListener != null) {
             mLifeCycleListener.onCreate(savedInstanceState);
@@ -108,7 +113,15 @@ public abstract class BaseMVPActivity<T, V extends BasePresenter, P extends Base
         if (mLifeCycleListener != null) {
             mLifeCycleListener.onDestroy();
         }
-        mPresenter = null;
+
+        if (mPresenter != null) {
+            mPresenter = null;
+        }
+
+        if (isSetFragmentCommunicationInterface) {
+            removeFragmentCommunicationInterface();
+        }
+
         ActivityStatckManager.getInstance().finishActivity(this);
     }
 
@@ -156,6 +169,21 @@ public abstract class BaseMVPActivity<T, V extends BasePresenter, P extends Base
 
     public void setmLifeCycleListener(LifeCycleListener mLifeCycleListener) {
         this.mLifeCycleListener = mLifeCycleListener;
+    }
+
+    /**
+     * 设置fragment 通信接口
+     * 子类实现具体接口函数
+     *
+     * @param tag
+     */
+    public void setFragmentCommunicationInterface(String tag) {
+        // subclass implements
+        isSetFragmentCommunicationInterface = true;
+    }
+
+    public void removeFragmentCommunicationInterface() {
+        FragmentCommunication.getInstance().remove(getClass().getName());
     }
 
     @Override

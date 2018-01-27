@@ -1,5 +1,6 @@
 package yxdroid.droidfm.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -7,13 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import yxdroid.droidfm.mvp.view.IBaseView;
-
 import butterknife.ButterKnife;
+import yxdroid.droidfm.fragment.FragmentCommunication;
+import yxdroid.droidfm.mvp.view.IBaseView;
 
 public abstract class BaseFragment extends Fragment implements IBaseView {
 
     protected View rootView;
+
+    protected FragmentCommunication fragmentCommunication;
 
     @Nullable
     @Override
@@ -29,6 +32,15 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
     }
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof BaseMVPActivity) {
+            fragmentCommunication = FragmentCommunication.getInstance();
+            ((BaseMVPActivity)context).setFragmentCommunicationInterface(getTag());
+        }
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
     }
@@ -41,5 +53,13 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
     @Override
     public void onCloseLoading() {
         ((BaseMVPActivity) getActivity()).onCloseLoading();
+    }
+
+    public void showTip(String text) {
+        ((BaseMVPActivity) getActivity()).showTip(text);
+    }
+
+    public void showTip(int resId) {
+        ((BaseMVPActivity) getActivity()).showTip(resId);
     }
 }

@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ProjectTemplete.iml" filepath="$PROJECT_DIR$/ProjectTemplete.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ProjectTemplete.iml" filepath="$PROJECT_DIR$/ProjectTemplete.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/droidfm/droidfm.iml" filepath="$PROJECT_DIR$/droidfm/droidfm.iml" />
       <module fileurl="file://$PROJECT_DIR$/droidfm/droidfm.iml" filepath="$PROJECT_DIR$/droidfm/droidfm.iml" />
     </modules>
   </component>
