@@ -190,7 +190,6 @@ public abstract class BaseMVPActivity<T, V extends BasePresenter, P extends Base
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             onBack();
-            close();
             return true;
         }
         return super.onKeyDown(keyCode, event);

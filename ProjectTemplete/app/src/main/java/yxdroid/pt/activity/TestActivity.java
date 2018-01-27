@@ -29,7 +29,7 @@ public class TestActivity extends BaseMVPActivity {
 
     @Override
     protected void onBack() {
-
+        close();
     }
 
     @Override

@@ -54,7 +54,7 @@ public class MainActivity extends BaseMVPActivity<IMainView, MainPresenter, Main
 
     @Override
     protected void onBack() {
-
+        close();
     }
 
     @Override
