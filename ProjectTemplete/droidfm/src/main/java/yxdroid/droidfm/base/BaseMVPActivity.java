@@ -1,13 +1,19 @@
 package yxdroid.droidfm.base;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.KeyEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.orhanobut.logger.Logger;
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 import com.trello.rxlifecycle2.components.support.RxFragmentActivity;
 
 import java.util.List;
@@ -44,6 +50,8 @@ public abstract class BaseMVPActivity<T, V extends BasePresenter, P extends Base
             setContentView(layoutId);
         }
 
+        //setStatusBarStyle();
+
         ButterKnife.bind(this);
 
         mPresenter = (V) createPresenter();
@@ -59,6 +67,25 @@ public abstract class BaseMVPActivity<T, V extends BasePresenter, P extends Base
         onInit();
 
         Logger.i("onCreate " + getLocalClassName());
+    }
+
+    private void setStatusBarStyle() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+
+            SystemBarTintManager tintManager = new SystemBarTintManager(this);
+            tintManager.setStatusBarTintEnabled(true);
+            tintManager.setNavigationBarTintEnabled(true);
+            tintManager.setStatusBarTintResource(android.R.color.holo_green_light);
+
+            // 沉浸式任务栏
+            ViewGroup contentFrameLayout = findViewById(Window.ID_ANDROID_CONTENT);
+            View parentView = contentFrameLayout.getChildAt(0);
+            if (parentView != null && Build.VERSION.SDK_INT >= 14) {
+                parentView.setFitsSystemWindows(true);
+            }
+        }
     }
 
     @Override
@@ -208,7 +235,7 @@ public abstract class BaseMVPActivity<T, V extends BasePresenter, P extends Base
     }
 
     protected void initActionBar(String title, int rightImg) {
-        if(customActionBar == null) {
+        if (customActionBar == null) {
             customActionBar = new CustomActionBar(this, this);
         }
         try {

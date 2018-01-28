@@ -67,6 +67,10 @@ public class CustomActionBar {
                 ActionBar.LayoutParams.MATCH_PARENT,
                 Gravity.CENTER);
 
+        if (actionBar == null) {
+            return;
+        }
+
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
 
         View actionBarCustomView = baseActivity.getLayoutInflater().inflate(R.layout.custom_action_bar_layout, null);
