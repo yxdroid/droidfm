@@ -49,7 +49,8 @@ public class MainActivity extends BaseMVPActivity<IMainView, MainPresenter, Main
         DroidEvent.register(this);
         tvSample.setText("你来啊");
 
-        ImageLoader.loadImage(ivPic, "http://h.hiphotos.baidu.com/image/pic/item/b7fd5266d016092494670382df0735fae7cd34ec.jpg", UnitsConvert.dip2px(this, 300), UnitsConvert.dip2px(this, 300));
+        ImageLoader.loadImage(ivPic, "http://img.zcool.cn/community/0139b1569478906ac725af230132d0.gif",
+                UnitsConvert.dip2px(this, 300), UnitsConvert.dip2px(this, 300), true);
     }
 
     @Override

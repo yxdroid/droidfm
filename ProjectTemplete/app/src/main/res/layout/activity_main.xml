@@ -20,7 +20,6 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_gravity="center"
-        android:visibility="gone"
         fresco:fadeDuration="3000" />
 
 

@@ -173,6 +173,10 @@ public class ImageLoader {
     }
 
     public static void loadImage(SimpleDraweeView draweeView, String uriString, int width, int height) {
+        loadImage(draweeView, uriString, width, height, false);
+    }
+
+    public static void loadImage(SimpleDraweeView draweeView, String uriString, int width, int height, boolean gif) {
         if (TextUtils.isEmpty(uriString)) {
             Logger.e("load image uri is null");
             return;
@@ -189,6 +193,7 @@ public class ImageLoader {
         PipelineDraweeController controller = (PipelineDraweeController) Fresco.newDraweeControllerBuilder()
                 .setOldController(draweeView.getController())
                 .setImageRequest(request)
+                .setAutoPlayAnimations(gif)
                 .build();
 
         draweeView.setController(controller);
