@@ -46,6 +46,8 @@ public class MainActivity extends BaseMVPActivity<IMainView, MainPresenter, Main
 
     @Override
     protected void onInit() {
+        initActionBar("首页");
+
         DroidEvent.register(this);
         tvSample.setText("你来啊");
 
@@ -54,7 +56,8 @@ public class MainActivity extends BaseMVPActivity<IMainView, MainPresenter, Main
     }
 
     @Override
-    protected void onBack() {
+    public void onBack() {
+        super.onBack();
         close();
     }
 

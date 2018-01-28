@@ -28,7 +28,8 @@ public class TestActivity extends BaseMVPActivity {
     }
 
     @Override
-    protected void onBack() {
+    public void onBack() {
+        super.onBack();
         close();
     }
 

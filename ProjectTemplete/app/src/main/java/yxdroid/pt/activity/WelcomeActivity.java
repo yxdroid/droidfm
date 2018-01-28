@@ -35,8 +35,8 @@ public class WelcomeActivity extends BaseMVPActivity
     }
 
     @Override
-    protected void onBack() {
-
+    public void onBack() {
+        super.onBack();
     }
 
     @Override
