@@ -83,6 +83,8 @@ public class TestActivity extends BaseMVPActivity {
             public void run(Integer integer) {
                 showTip(integer + "");
             }
+
+
         });
     }
 
